@@ -9,7 +9,6 @@
 ![Players](frontend/src/assets/img/players.png)
 ![Player](frontend/src/assets/img/player.png)
 ![Graph](frontend/src/assets/img/graph.png)
-![Graph](frontend/src/assets/img/graph.png)
 
 
 ## Como empezar :rocket:
@@ -50,10 +49,6 @@ ng serve
 ```
 
 Finalmente, abre tu navegador web y visita [http://localhost:4200](http://localhost:4200)
-
-## Deployment :stars:
-
-También puedes simplemente visitar nuestro despliegue de la aplicación: [enlace al despliegue](aquí_va_el_enlace)
 
 ## Features
 Nuestra aplicación ofrece las siguientes funcionalidades principales:
