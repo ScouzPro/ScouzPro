@@ -1,0 +1,21 @@
+<div style="margin-top: 5%;">
+    <label style="margin-top: 5%; margin-left:10%; " for="metricId">Seleccionar informe:</label>
+    <select id="metricId" [(ngModel)]="selectedMetric" (change)=" generateChart()">
+        <option *ngFor="let metric of playerMetrics" [ngValue]="metric._id">{{ metric.Created_At }}</option>
+    </select>
+
+    <!-- <div>
+        <h2 style="text-align: center; font-size: 30px; font-weight: bold;">Habilidades principales según informe</h2>
+        <canvas #donutChart></canvas>
+    </div> -->
+
+    <!-- <div>
+        <h2 style="text-align: center; font-size: 30px; font-weight: bold;">Habilidades Tácticas según informe</h2>
+        <canvas #secondChart></canvas>
+    </div> -->
+
+    <div>
+        <h2 style="text-align: center; font-size: 30px; font-weight: bold; margin-top: 5%;">Habilidades Físicas según informe</h2>
+        <canvas style="margin-top: 5%;" #thirdChart></canvas>
+    </div>
+</div>

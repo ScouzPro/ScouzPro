@@ -1,0 +1,7 @@
+/* Añadimos un margen superior al botón para dejar espacio para la alerta */
+.form-control {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+

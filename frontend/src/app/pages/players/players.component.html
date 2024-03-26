@@ -1,0 +1,143 @@
+<div>
+  <app-navbar></app-navbar>
+</div>
+<app-header-secondary></app-header-secondary>
+
+<main class="flex flex-col sm:flex-row-reverse justify-center items-center" style="margin-bottom: 60px;">
+  
+<!-- filtros -->
+<div class="w-full sm:w-1/5 p-3 pr-4 m-5 order-first sm:order-last">
+  <div class="relative group duration-1000 cursor-pointer group overflow-hidden text-gray-50 h-[37rem] w-full md:w-[108%] rounded-2xl">
+      <div class="w-full w-400 h-[25rem] bg-[#142740] text-white pt-2 pl-1">
+        <span class="p-3 text-white font-bold text-2xl ">FILTROS</span>
+        <p class="p-3 text-white text-m mb-4 pb-2">Selecciona uno o más filtros para encontrar jugadores</p>
+      </div>
+      <div class="absolute top-20 w-full md:w-200 h-198 bg-gray-100 pl-4">
+        <!-- Aquí van los filtros -->
+        <label class="label text-lg sm:text-xl font-bold text-black -mb-0.5">Nacionalidad</label>
+        <select [(ngModel)]="nacionalidadFiltro" class="select select-bordered w-80 text-black">
+          <option value="">Seleccione una nacionalidad:</option>
+          <option *ngFor="let nacionalidad of nacionalidadesUnicas" [value]="nacionalidad">{{ nacionalidad }}</option>
+        </select>
+    
+        <label class="label text-lg sm:text-xl font-bold text-black -mb-0.5">Rango de Edad</label>
+        <div class="flex flex-wrap">
+          <div *ngFor="let rango of rangosEdad" class="form-control mr-2 mb-2">
+            <label class="label cursor-pointer">
+              <span class="label-text text-black ">{{ rango }}</span>
+              <input type="radio" [value]="rango" [(ngModel)]="edadFiltro" name="edadFiltro"
+                class="radio checked:bg-primary" />
+            </label>
+          </div>
+        </div>
+        <label class="label text-lg sm:text-xl font-bold text-black -mb-0.5">Rango de Estatura</label>
+        <div class="flex flex-wrap ">
+          <div *ngFor="let rango of rangosEstatura" class="form-control mr-2 mb-2 ">
+            <label class="label cursor-pointer">
+              <span class="label-text text-black ">{{ rango }}</span>
+              <input type="radio" [value]="rango" [(ngModel)]="estaturaFiltro" name="estaturaFiltro"
+                class="radio checked:bg-primary" />
+            </label>
+          </div>
+        </div>
+        <label class="label text-lg sm:text-xl font-bold text-black -mb-0.5">Pie Dominante</label>
+    <div class="flex">
+      <div *ngFor="let pie of piesDominantes" class="form-control mr-2">
+        <label class="label cursor-pointer">
+          <span class="label-text">{{ pie }}</span>
+          <input type="radio" [value]="pie" [(ngModel)]="pieDominanteFilter"
+            name="pieDominante" class="radio checked:bg-primary" />
+        </label>
+      </div>
+    </div>
+    
+    <div class="flex justify-center px-2 pt-6 pb-2">
+      <button (click)="filtrarJugadores()" class="text-white bg-[#142740] hover:bg-[#22426d] font-medium rounded-full text-sm px-5 w-30 h-8 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 w-auto">Aplicar</button>
+      <button (click)="limpiarFiltros()" class="text-white bg-[#C84343] hover:bg-[#d16161] font-medium rounded-full text-sm px-5 w-30 h-8 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 w-auto">Limpiar</button>
+  </div>
+    <ng-template #noResults>
+          <div class="text-red-500">No se encontraron resultados.</div>
+        </ng-template>
+      </div>
+    </div>
+</div>
+
+<!-- tarjetas jugadores -->
+<div class="w-full sm:w-2/3 p-4 justify-center">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div *ngFor="let player of filteredPlayers | paginate: { itemsPerPage: pageSize, currentPage: currentPage }">
+        <div class="card-background bg-white rounded-lg shadow-lg mb-4 h-auto sm:h-90 transition-transform duration-300 ease-in-out transform hover:scale-110">
+          <figure>
+            <img [src]="player.photo" alt="{{player.name}}" class="w-full h-36 sm:h-48 object-cover rounded-t-lg" />
+          </figure>
+          <div class="p-4 flex flex-col justify-center">
+            <h2 class="text-lg sm:text-xl font-bold text-white mb-2 text-center">{{player.name}}</h2>
+            <p class="text-sm sm:text-md text-white mb-2 text-center">{{player.actualTeam}}</p>
+            <p class="text-xs sm:text-sm text-white mb-2 text-center">{{player.nationality}}</p>
+            <div class="flex justify-center mt-auto">
+              <a [routerLink]="['/player', player.id]"
+                  class="text-white bg-[#C84343] hover:bg-[#d16161] font-medium rounded-full text-xs sm:text-xs px-4 py-1 sm:px-3 sm:py-1 text-center me-2 mb-2">Detalles</a>
+              <button (click)="openConfirmModal()"
+              class="text-black bg-gray-100 hover:bg-gray-300 font-medium border border-white rounded-full text-xs sm:text-xs px-4 py-1 sm:px-3 sm:py-1 text-center me-2 mb-2">Eliminar</button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="confirmModal" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+          <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+              <!-- Fondo oscuro -->
+              <div class="fixed inset-0 bg-gray-500 bg-opacity-20 transition-opacity" aria-hidden="true"></div>
+
+              <!-- Contenido del modal de confirmación -->
+              <div class="inline-block align-middle bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                  <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="flex flex-col justify-center items-center">
+                          
+                          <!-- Mensaje de confirmación -->
+                          <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                              ¿Quieres continuar y borrar este jugador?
+                          </h3>
+                      </div>
+                  </div>
+                  <!-- Botones de confirmar y cancelar -->
+                  <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse sm:justify-evenly">
+                      <!-- Botón de aceptar -->
+                      <button (click)="eliminarJugador(player.id)" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+                          Aceptar
+                      </button>
+                      <!-- Botón de cancelar -->
+                      <button (click)="confirmModal = false" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                          Cancelar
+                      </button>
+                  </div>
+              </div>
+          </div>
+</div>
+
+      </div>
+        
+    </div>
+
+    <div *ngIf="resumenFiltros; else noFiltros">
+      <p>Filtros aplicados: {{ resumenFiltros }}</p>
+    </div>
+    <ng-template #noFiltros>
+      <p>No se han aplicado filtros.</p>
+    </ng-template>
+
+    <div *ngIf="filteredPlayers.length === 0; else showResults">
+      <ng-container *ngTemplateOutlet="noResults"></ng-container>
+    </div>
+
+    <ng-template #showResults>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-white bg-[#142740]">
+        <!-- Resto del código para mostrar los jugadores -->
+      </div>
+    </ng-template>
+    <pagination-controls (pageChange)="currentPage = $event" previousLabel="Anterior" nextLabel="Siguiente"
+      class="mt-4 mb-12 text-white bg-[#142740]"></pagination-controls>
+  </div>
+</main>
+
+<div>
+  <app-footer></app-footer>
+</div>

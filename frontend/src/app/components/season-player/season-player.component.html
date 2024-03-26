@@ -1,0 +1,107 @@
+<div class="container" style="margin-top: 5%;">
+  <!-- Título -->
+    <h2 class="bg-[#142740 text-white ">Detalles de la temporada</h2> 
+    <!-- Primer div con los valores de games, goals y valorationMedia -->
+    <div *ngIf="seasonData">
+        <div>            
+            <table>
+                <tr >
+                  <th style="padding-right: 60px;">Partidos</th>
+                  <th style="padding-right: 60px;">Goles</th>
+                  <th>Valoracion Media</th>
+                </tr>
+                <tr>
+                  <td style="font-size: 30px;">{{ seasonData.games }}</td>
+                  <td style="font-size: 30px;">{{ seasonData.goals }}</td>
+                  <td>
+                    <div *ngIf="seasonData.valorationMedia">
+                      <ul>
+                        <li style="font-size: 30px;" *ngFor="let valoration of seasonData.valorationMedia">{{ valoration }}</li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+        </div>
+    </div>
+    <!-- Segundo div con los campos playerGame, playerJourney, yellowCards, redCards -->
+    <div *ngIf="seasonData">
+        <table>
+          <tr>
+            <td>Jugador del partido:</td>
+            <td>{{ seasonData.playerGame }}</td>
+          </tr>
+          <tr>
+            <td>Jugador de la jornada:</td>
+            <td>{{ seasonData.playerJourney }}</td>
+          </tr>
+          <tr>
+            <td>Tarjetas amarillas:</td>
+            <td>{{ seasonData.yellowCards }}</td>
+          </tr>
+          <tr>
+            <td>Tarjetas rojas:</td>
+            <td>{{ seasonData.redCards }}</td>
+          </tr>
+        </table>
+    </div>  
+</div>
+<div class="flex justify-center">
+  
+  <button (click)="openEditModal()" class="btn px-1 w-full bg-[#C84343] text-white text-center hover:bg-white hover:text-black disabled:opacity-50 disabled:pointer-events-none dark:bg-[#142740] dark:border-red-800 dark:text-white dark:hover:bg-red-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-red-800" >Editar</button>
+  <!-- Modal de edición -->
+  <div class="fixed z-10 inset-0 overflow-y-auto flex items-center justify-center" aria-labelledby="modal-title" role="dialog" aria-modal="true" *ngIf="seasonData && showEditModal">
+    <div style="padding-top: 90px;" class="bg-white w-1/3 px-4 pt-5 pb-4 sm:p-6 sm:pb-4 rounded-lg">
+        <div class="sm:flex sm:items-start">
+            <div class="mt-1 text-center sm:mt-0 sm:text-left w-full">
+                <h3 style="margin-bottom:5%; background-color: rgba(8, 8, 65, 0.826) ; color: aliceblue; width: 100%; text-align: center;" class="text-lg leading-6 font-medium text-gray-600" id="modal-title">
+                    Editar Datos de la temporada
+                </h3>
+                <div class="mt-1">
+                    <!-- Campos de entrada para editar los  alores -->
+                    <label for="playerGame" class="block mb-2">Partidos:</label>
+                    <input type="number" id="playerGame" [(ngModel)]="editedSeason.games" class="w-full border rounded px-3 py-2 mb-3">
+
+                    <label for="playerGame" class="block mb-2">Goles:</label>
+                    <input type="number" id="playerGame" [(ngModel)]="editedSeason.goals" class="w-full border rounded px-3 py-2 mb-3">
+                  
+                    <label for="playerGame" class="block mb-2">Valoracion media</label>
+                    <input type="number" id="playerGame" [(ngModel)]="editedSeason.valorationMedia" class="w-full border rounded px-3 py-2 mb-3">                    
+
+                    <label for="playerGame" class="block mb-2">Jugador del partido:</label>
+                    <input type="number" id="playerGame" [(ngModel)]="editedSeason.playerGame" class="w-full border rounded px-3 py-2 mb-3">
+
+                    <label for="playerJourney" class="block mb-2">Jugador de la jornada:</label>
+                    <input type="number" id="playerJourney" [(ngModel)]="editedSeason.playerJourney" class="w-full border rounded px-3 py-2 mb-3">
+
+                    <label for="yellowCards" class="block mb-2">Tarjetas amarillas:</label>
+                    <input type="number" id="yellowCards" [(ngModel)]="editedSeason.yellowCards" class="w-full border rounded px-3 py-2 mb-3">
+
+                    <label for="redCards" class="block mb-2">Tarjetas rojas:</label>
+                    <input type="number" id="redCards" [(ngModel)]="editedSeason.redCards" class="w-full border rounded px-3 py-2 mb-3">
+                    <div style="margin-left: 25%; gap: 200px;">
+                    <!-- Botón para actualizar -->
+                      <button (click)="updateSeason()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Actualizar</button>
+                      <!-- Botón para cerrar el modal -->
+                      <button (click)="closeEditModal()" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mt-2">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+ 
+  
+
+
+      
+
+
+
+
+
+

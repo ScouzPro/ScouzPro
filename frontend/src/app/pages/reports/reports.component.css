@@ -1,0 +1,56 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Definir columnas automáticas con un ancho mínimo de 300px */
+    gap: 20px; /* Espacio entre las tarjetas */
+    font-size: 12px;
+    margin-bottom: 60px;
+    border: none;   
+  }
+  
+  /* Estilos para las tarjetas */
+
+  .principalCard {
+      display: flex !important;
+      
+    }
+
+  
+  .card1 {
+    border: none;
+    padding: 20px;
+    width: auto;
+    
+   
+  }
+
+  .card1 h2 {
+    font-weight: bold;
+    color: black;
+    padding-left: 80px;
+    margin-bottom: 10px;
+  }
+   
+  .card1 label {
+    font-weight: bold;
+  }
+  
+  
+  .playerInfo {
+    margin-top: 5px;
+    font-weight: bold;
+    
+  }
+
+  .metricClass {
+    display: flex;
+    gap: 80px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  /* Estilos para los botones */
+  .buttonMetrics {
+    margin-top: 10px;
+    margin-left: 70px;
+  }
+  
+  

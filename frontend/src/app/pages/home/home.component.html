@@ -1,0 +1,190 @@
+<div>
+  <app-navbar></app-navbar>
+</div>
+
+
+<!-- Carrusel -->
+
+<div class="mt- relative mt-10 ">
+  <div class="carousel w-full h-80 relative overflow-hidden rounded-lg shadow-md"
+    style="background-image: url('/frontend/src/assets/logos/png/banner.png');">
+    <div id="item1" class="carousel-item w-full h-full absolute top-0 left-0 flex">
+      <!-- Columna de la imagen -->
+      <div class="w-1/2 h-full flex justify-center items-center">
+        <img
+          src="https://img.freepik.com/fotos-premium/retrato-jugadora-futbol-feliz-posando-campo-hermosa-chica-sentada-pelota-mirando-camara-otras-chicas-descansando-detras-comunicandose-hobby-actividad-ocio-concepto-deporte-equipo_74855-23918.jpg?size=626&ext=jpg&ga=GA1.2.1913972236.1703430069&semt=ais"
+          class="w-full h-full object-cover" />
+      </div>
+      <!-- Columna de texto y botón -->
+      <div class="w-1/2 h-full flex flex-col justify-center items-center bg-gradient-to-br from-white to-[#F2D16D]">
+        <h3 class="text-3xl font-bold text-black">Julieta Zuleta</h3>
+        <p class="text-lg text-black text-center mb-10">Jugador Destacado del mes de Marzo</p>
+        <button type="button"
+          class="text-white bg-[#C84343] hover:bg-red-150 focus:outline-none focus:ring-4 focus:ring-gray-500 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          [routerLink]="['/players']">Ver Jugadoras</button>
+      </div>
+    </div>
+    <div id="item2" class="carousel-item w-full h-full absolute top-0 left-0 flex">
+      <!-- Columna de la imagen -->
+      <div class="w-1/2 h-full flex justify-center items-center">
+        <img
+          src="https://img.freepik.com/fotos-premium/jugadores-equipo-futbol-femenino-estiramiento-pre-juego_53876-69756.jpg?size=626&ext=jpg&ga=GA1.2.1913972236.1703430069&semt=ais"
+          class="w-full h-full object-cover" />
+      </div>
+      <!-- Columna de texto y botón -->
+      <div class="w-1/2 h-full flex flex-col justify-center items-center bg-gradient-to-br from-white to-[#F2D16D]">
+        <h3 class="text-3xl font-bold text-black">Jornadas de entrenamiento</h3>
+        <p class="text-lg text-black text-center mb-10">Ven y disfruta de los entrenamientos para obten más
+          oportunidades de ver las jugadoras destacadas <br>Revisa las últimas estadísticas </p>
+
+        <button type="button"
+          class="text-white bg-[#C84343] hover:bg-red-150 focus:outline-none focus:ring-4 focus:ring-gray-500 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          [routerLink]="['/graph']">Ver Estadísticas</button>
+      </div>
+    </div>
+    <div id="item3" class="carousel-item w-full h-full absolute top-0 left-0 flex">
+      <!-- Columna de la imagen -->
+      <div class="w-1/2 h-full flex justify-center items-center">
+        <img src="https://cdn.pixabay.com/photo/2022/10/17/09/56/team-7527215_1280.jpg"
+          class="w-full h-full object-cover" />
+      </div>
+      <!-- Columna de texto y botón -->
+      <div class="w-1/2 h-full flex flex-col justify-center items-center bg-gradient-to-br from-white to-yellow-300">
+        <h3 class="text-3xl font-bold text-black">Crea tus Informes</h3>
+        <p class="text-lg text-black text-center mb-10">Crea informes de las Jugadoras y accede a ellos en tú perfil de
+          Ojeador</p>
+        <button type="button"
+          class="text-white bg-[#C84343] hover:bg-red-150 focus:outline-none focus:ring-4 focus:ring-gray-500 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          [routerLink]="['/reports']">Crea Informes</button>
+      </div>
+    </div>
+    <div id="item4" class="carousel-item w-full h-full absolute top-0 left-0 flex">
+      <!-- Columna de la imagen -->
+      <div class="w-1/2 h-full flex justify-center items-center">
+        <img
+          src="https://images.unsplash.com/photo-1526841931552-d5f57307638e?q=80&w=1945&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          class="w-full h-full object-cover" />
+      </div>
+      <!-- Columna de texto y botón -->
+      <div class="w-1/2 h-full flex flex-col justify-center items-center bg-gradient-to-br from-white to-[#F2D16D]">
+        <h3 class="text-3xl font-bold text-black">Gestiona tu perfil y contrata las mejores atletas</h3>
+        <p class="text-lg text-black text-center mb-10">Filtra por categorias y haz tu mejor elección</p>
+        <button type="button"
+          class="text-white bg-[#C84343] hover:bg-red-150 focus:outline-none focus:ring-4 focus:ring-gray-500 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          [routerLink]="['/players']">Ver Jugadores</button>
+      </div>
+    </div>
+    <div id="item5" class="carousel-item w-full h-full absolute top-0 left-0 flex">
+      <!-- Columna de la imagen -->
+      <div class="w-1/2 h-full flex justify-center items-center">
+        <img
+          src="https://images.unsplash.com/photo-1626248801379-51a0748a5f96?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          class="w-full h-full object-cover" />
+      </div>
+      <!-- Columna de texto y botón -->
+      <div class="w-1/2 h-full flex flex-col justify-center items-center bg-gradient-to-br from-white to-[#F2D16D]">
+        <h3 class="text-3xl font-bold text-black">Tenemos un equipo de entrenadores para todas las edades</h3>
+        <p class="text-lg text-black text-center mb-10">Elige bien a tus deportistas</p>
+        <button type="button"
+          class="text-white bg-[#C84343] hover:bg-red-150 focus:outline-none focus:ring-4 focus:ring-gray-500 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          [routerLink]="['/reports']">Ver Comparativas</button>
+      </div>
+    </div>
+    <div id="item6" class="carousel-item w-full h-full absolute top-0 left-0 flex">
+      <!-- Columna de la imagen -->
+      <div class="w-1/2 h-full flex justify-center items-center">
+        <img
+          src="https://images.unsplash.com/photo-1569242185997-c9899faae8ce?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          class="w-full h-full object-cover" />
+      </div>
+      <!-- Columna de texto y botón -->
+      <div class="w-1/2 h-full flex flex-col justify-center items-center bg-gradient-to-br from-white to-[#F2D16D]">
+        <h3 class="text-3xl font-bold text-black">FC Factoria VS Atletico Tomillo </h3>
+        <p class="text-lg text-black text-center mb-10">Un gran encuentro, patrocinado por las mejores compañias en el
+          area tecnologica</p>
+        <button type="button"
+          class="text-white bg-[#C84343] hover:bg-red-150 focus:outline-none focus:ring-4 focus:ring-gray-500 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          [routerLink]="['/players']">Crear Informe</button>
+      </div>
+    </div>
+    <div id="item7" class="carousel-item w-full h-full absolute top-0 left-0 flex">
+      <!-- Columna de la imagen -->
+      <div class="w-1/2 h-full flex justify-center items-center">
+        <img
+          src="https://media.istockphoto.com/id/1420057901/es/foto/retrato-del-feliz-equipo-de-f%C3%BAtbol-femenino-mirando-a-la-c%C3%A1mara.jpg?s=612x612&w=0&k=20&c=02r_xDTlgUnOvhEXQY8-2P_1-LC7h5LWX1ejomNMshc="
+          class="w-full h-full object-cover" />
+      </div>
+      <!-- Columna de texto y botón -->
+      <div class="w-1/2 h-full flex flex-col justify-center items-center bg-gradient-to-br from-white to-[#F2D16D]">
+        <h3 class="text-3xl font-bold text-black">Grandes sonrisas de nuestras deportistas</h3>
+        <p class="text-lg text-black text-center mb-10">Un ambiente exepcional que permite visualizar las maravillosas
+          habilidades de nuestras futbolitas</p>
+        <button type="button"
+          class="text-white bg-[#C84343] hover:bg-red-150 focus:outline-none focus:ring-4 focus:ring-gray-500 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          [routerLink]="['/players']">Ver Jugadores</button>
+      </div>
+    </div>
+    <div class="flex justify-center w-full absolute bottom-1">
+      <button class="btn btn-xs mr-3 bg-gray-100 border border-none text-black px-3 text-l" (click)="moveCarousel(-1)">
+        << </button>
+          <button class="btn btn-xs bg-gray-100 border border-none text-black px-3 text-l" (click)="moveCarousel(+1)">
+            >> </button>
+    </div>
+  </div>
+
+
+  <div class="mt-8">
+    <div>
+      <h3
+        class="text-center text-3xl text-black underline mb-10 animate-bounce animate-twice animate-ease-linear hover:text-[#C84343]">
+        Algunos videos de los encuentros más destacados.</h3>
+
+
+      <app-videos></app-videos>
+    </div>
+    <h3
+      class="text-center text-3xl text-black underline mt-12 mb-10 animate-bounce animate-twice animate-ease-linear hover:text-[#C84343]">
+      Nuestras jugadoras estrella de la ultima jornada.</h3>
+
+    <div class="mt-9">
+      <div class="players-container mt-4 pb-8 max-w-screen-2xl mx-auto">
+        <div class="flex justify-center">
+          <div *ngIf="pagedPlayers && pagedPlayers.length > 0"
+            class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-6">
+            <div *ngFor="let player of pagedPlayers"
+              class="card-background bg-white rounded-lg shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-110 w-full md:w-80 lg:w-96 xl:w-80">
+
+              <!-- Contenido de la tarjeta -->
+              <img [src]="player.photo" alt="Player Photo" class="w-full h-34 object-cover rounded-t-lg">
+              <div class="p-2">
+                <p class="text-lg font-bold text-white">{{ player.name }}</p>
+                <p class="text-xs text-white">{{ player.position }}</p>
+                <div class="flex justify-between items-center mt-1">
+                  <p class="text-lg text-white">{{ player.dorsal }}</p>
+                  <p class="text-xs text-white">{{ player.nationality }}</p>
+                </div>
+                <div class="flex justify-between items-center mt-1">
+                  <p class="text-xs text-white">Eva. %: 85.3%</p>
+                  <p class="text-xs text-white">Ult. Eva.: 92</p>
+                  <p class="text-xs text-white">Informes: 12</p>
+                </div>
+                <div class="flex justify-between items-center mt-1">
+                  <div class="flex-grow text-xs text-white">Recomendación</div>
+                  <button (click)="seguir()" type="button"
+                    class="text-white bg-[#C84343] hover:bg-gray-500 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-xs px-3 py-1 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Seguir</button>
+                </div>
+                <div class="mt-1 text-xs text-white">
+                  <div>Próximo Seguimiento</div>
+                  <input type="date" [(ngModel)]="fechaSeguimiento"
+                    class="border border-gray-300 rounded-xs px-1 py-1 mt-1 text-xs text-black">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <app-footer></app-footer>
+    </div>

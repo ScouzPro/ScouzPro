@@ -1,0 +1,167 @@
+<div>
+  <app-navbar></app-navbar>
+</div>
+
+<!-- Container -->
+<div *ngIf="player">
+  <div class="max-w-[60rem] mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Hero -->
+      <div class="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
+          <div>
+              <h3 class="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">
+                  {{player.dorsal}} <span class="text-[#C84343]">{{player.name}} </span></h3>
+              <p class="mt-3 text-lg text-gray-800 dark:text-gray-400">{{player.strongFoot}}</p>
+    
+              <!-- Buttons -->
+              <div class="mt-7 grid gap-3 w-full sm:inline-flex">
+                  <!-- Botón para abrir el modal -->
+                  <button (click)="openModal()" class="py-2 px-3 inline-flex justify-center items-center gap-x-2 text-xs font-medium rounded-lg border border-blue-900 bg-blue-900 text-white shadow-sm hover:bg-white hover:text-black disabled:opacity-50 disabled:pointer-events-none dark:bg-[#142740] dark:border-gray-700 dark:text-white dark:hover:bg-blue-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-blue-600" href="#">
+                      Editar jugador
+                  </button>
+              </div>
+
+    
+              <!-- Review -->
+              <div class="mt-6 lg:mt-10 grid grid-cols-2 gap-x-5">
+              </div>
+              <!-- End Review -->
+          </div>
+          <!-- End Col -->
+    
+          <div class="relative ms-4">
+              <img class="w-full rounded-md"
+                  src="{{player.photo}}"
+                  alt="Image Description">
+              <div
+                  class="absolute inset-0 -z-[1] bg-gradient-to-tr from-gray-200 via-white/0 to-white/0 size-full rounded-md mt-4 -mb-4 me-4 -ms-4 lg:mt-6 lg:-mb-6 lg:me-6 lg:-ms-6 dark:from-slate-800 dark:via-slate-900/0 dark:to-slate-900/0">
+              </div>
+              <!-- SVG -->
+              <div class="absolute bottom-0 start-0">
+                  <svg class="w-2/3 ms-auto h-auto text-white dark:text-slate-900" width="630" height="451"
+                      viewBox="0 0 630 451" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  </svg>
+              </div>
+          </div>
+          <!-- End Col -->
+      </div>
+      <!-- End Hero -->
+
+      <!-- Aquí comienza el modal de éxito -->
+      <div *ngIf="successModalOpen" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+    
+            <!-- Contenido del modal de éxito -->
+            <div class="inline-block align-middle bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div >
+                        <div class="mt-3 text-center sm:mt-0 sm:text-left w-full">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                                ¡Éxito!
+                            </h3>
+                            <span class="absolute top-0 right-0 mt-3 mr-3 text-gray-700 cursor-pointer" (click)="closeModal()">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                            </span>
+                            <svg class="w-12 h-12 mx-auto mb-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <p class="mt-2 text-sm text-gray-500">¡El jugador se ha actualizado correctamente!</p>
+                            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                                <!-- Botón para cerrar el modal de éxito -->
+                                <button (click)="successModalOpen = false" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
+                                    Aceptar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+      </div>
+    
+    <!-- Modal -->
+    <div *ngIf="player && modalOpened" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+
+            <!-- Aquí empieza el modal -->
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <div class="mt-3 text-center sm:mt-0 sm:text-left w-full">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                                Editar jugador
+                            </h3>
+                            <!-- Formulario con los campos del jugador -->
+                            <div class="mt-5">
+                                <label for="name" class="block text-sm font-medium text-gray-700">Nombre:</label>
+                                <input type="text" id="name" name="name" [(ngModel)]="editedPlayer.name" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <label for="age" class="block text-sm font-medium text-gray-700">Edad:</label>
+                                <input type="number" id="age" name="age" [(ngModel)]="editedPlayer.age" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <label for="dorsal" >Dorsal.</label>
+                                <input type="number" id="dorsal" name="dorsal" [(ngModel)]="editedPlayer.dorsal" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <label for="weight">Peso:</label>
+                                <input type="text" id="weight" name="weight" [(ngModel)]="editedPlayer.weight" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <label for="height">Altura:</label>
+                                <input type="text" id="height" name="height" [(ngModel)]="editedPlayer.height" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <label for="nationality">Nacionalidad</label>
+                                <input type="text" id="nationality" name="nationality" [(ngModel)]="editedPlayer.nationality" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <label for="strongFoot">Pie Dominante</label>
+                                <input type="text" id="strongFoot" name="strongFoot" [(ngModel)]="editedPlayer.strongFoot" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                              </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-4 py-3 flex flex-row-reverse">
+                    <!-- Botón para actualizar -->
+                    <button (click)="updatePlayerData()" type="button" class="rounded-md border border-transparent px-2 py-1 font-medium text-white bg-[#142740] hover:bg-blue-600 text-sm">
+                        Actualizar
+                    </button>
+                    <!-- Botón para cerrar el modal -->
+                    <button (click)="closeModal()" type="button" class="rounded-md border px-2 py-1 font-medium text-white bg-[#142740] hover:bg-blue-600 text-sm">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fin del Modal -->
+  </div>
+
+<div *ngIf="player" class="mt-8 w-full flex flex-col space-evenly">
+  <table class=" bg-white shadow-md rounded-lg overflow-hidden ">
+    <thead class="bg-[#F2D16D] text-black">
+      <tr>
+        <th class="py-2 px-4">Dorsal</th>
+        <th class="py-2 px-4">Peso</th>
+        <th class="py-2 px-4">Altura</th>
+        <th class="py-2 px-4">Nacionalidad</th>
+        <th class="py-2 px-4">Pie Dominante</th>
+        <th class="py-2 px-4">Edad</th>
+      </tr>
+    </thead>
+    <tbody class="text-gray-700">
+      <tr>
+        <td class="py-2 px-4 text-center align-middle">{{ player.dorsal }}</td>
+        <td class="py-2 px-4 text-center align-middle">{{ player.weight }} kg</td>
+        <td class="py-2 px-4 text-center align-middle">{{ player.height }} cm</td>
+        <td class="py-2 px-4 text-center align-middle">{{ player.nationality }} </td>
+        <td class="py-2 px-4 text-center align-middle">{{ player.strongFoot }}</td>
+        <td class="py-2 px-4 text-center align-middle">{{ player.age }} años</td>
+      </tr>
+    </tbody>
+  </table>
+  
+</div>
+    <div style="display: flex; flex-direction: row-reverse; justify-content: space-around;">
+        <app-season-player [playerId]="player.id"></app-season-player>
+        <app-total-graphics [playerId]="player.id" ></app-total-graphics>
+    </div>
+</div>
+<div class="mt-8" style="margin-bottom: 5%;">
+    <app-footer></app-footer>
+  </div>

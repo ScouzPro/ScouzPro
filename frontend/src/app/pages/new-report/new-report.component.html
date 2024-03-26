@@ -1,0 +1,184 @@
+<app-navbar/>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  <div *ngFor="let player of player" class="bg-white overflow-hidden shadow-md rounded-lg">
+    <img src="{{player.photo}}" alt="{{player.name}}" class="w-90 h-90"/>
+  </div>
+  <div *ngFor="let player of player" class="bg-white overflow-hidden shadow-md rounded-lg">
+    <div class="p-6">
+      <div class="text-2xl font-bold text-gray-900 mb-2">{{ player.name }}</div>
+      <div class="text-sm text-gray-500">{{ player.actualTeam }}</div>
+    </div>
+  </div>
+</div>
+
+<form (submit)="submitForm()" class=" mt-10">
+  <ul>
+    <div class="grid grid-cols-3 gap-6">
+    <div class="grid-items">
+    <li class="my-4 mb-16">
+      <h2 class="text-2xl font-bold mb-6">Habilidades Principales</h2>
+      <ul>
+        <li>
+          <label  for="shot">Disparo:</label>
+          <input type="number" placeholder="Disparo" id="shot" class="input input-bordered w-full max-w-xs mb-3" name="shot" [(ngModel)]="shot" (ngModelChange)="calculateTotal()" />
+        </li>
+        <li >
+          <label for="heading">Cabezazo:</label>
+          <input type="number" name="heading" id="heading" placeholder="Heading" max="10" class="input input-bordered w-full max-w-xs mb-3" [(ngModel)]="heading" (ngModelChange)="calculateTotal()">
+        </li>
+        <li>
+          <label for="association">Asociación:</label>
+          <input type="number" name="association" id="association" class="input input-bordered w-full max-w-xs mb-3" placeholder="Asociación" max="10" [(ngModel)]="association" (ngModelChange)="calculateTotal()">
+        </li>
+        <li>
+          <label for="rightFoot">Pie Derecho:</label>
+          <input type="number" name="rightFoot" id="rightFoot" class="input input-bordered w-full max-w-xs mb-3" placeholder="Right Foot" max="10" [(ngModel)]="rightFoot" (ngModelChange)="calculateTotal()">
+        </li>
+        <li>
+          <label for="leftFoot">Pie Izquierdo:</label>
+          <input type="number" name="leftFoot" id="leftFoot" class="input input-bordered w-full max-w-xs mb-3" placeholder="Left Foot" max="10" [(ngModel)]="leftFoot" (ngModelChange)="calculateTotal()">
+        </li>
+        <li>
+          <label for="longPasses">Pase Largo:</label>
+          <input type="number" name="longPasses" id="longPasses" class="input input-bordered w-full max-w-xs mb-3" placeholder="Long Passes" max="10" [(ngModel)]="longPasses" (ngModelChange)="calculateTotal()">
+        </li>
+        <li>
+          <label for="dribbling">Drible:</label>
+          <input type="number" name="dribbling" id="dribbling" class="input input-bordered w-full max-w-xs mb-3" placeholder="Dribbling" max="10" [(ngModel)]="dribbling" (ngModelChange)="calculateTotal()">
+        </li>
+        <li>
+          <label for="reflexes">Reflejos:</label>
+          <input type="number" name="reflexes" id="reflexes" class="input input-bordered w-full max-w-xs mb-3" placeholder="Reflexes" max="10" [(ngModel)]="reflexes" (ngModelChange)="calculateTotal()">
+        </li>
+        <li>
+          <label for="crosses">Centros:</label>
+          <input type="number" name="crosses" id="crosses" class="input input-bordered w-full max-w-xs mb-3" placeholder="Crosses" max="10" [(ngModel)]="crosses" (ngModelChange)="calculateTotal()">
+        </li>
+        <li>
+          <label for="totalPrincipalSkills">Promedio Habilidades Príncipales:</label>
+          <input type="number" name="totalPrincipalSkills" id="totalPrincipalSkills" class="input input-bordered w-full max-w-xs mb-3 mt-4" placeholder="Promedio" max="10" disabled [(ngModel)]="totalPrincipalSkills">
+        </li>
+      </ul>
+    </li>
+  </div>
+  <div class="grid-items">
+    <li class="my-4">
+      <h2 class="text-2xl font-bold mb-6">Habilidades Físicas</h2>
+      <ul>
+        <li>
+          <label for="agility">Agilidad:</label>
+          <input type="number" name="agility" id="agility" class="input input-bordered w-full max-w-xs mb-3" placeholder="Agility" max="10" [(ngModel)]="agility" (ngModelChange)="calculateTotal()">
+        </li>
+        <li>
+          <label for="flexibility">Flexibilidad:</label>
+          <input type="number" name="flexibility" id="flexibility" class="input input-bordered w-full max-w-xs mb-3" placeholder="Flexibility" max="10" [(ngModel)]="flexibility" (ngModelChange)="calculateTotal()">
+        </li>
+        <li>
+          <label for="strength">Fuerza:</label>
+          <input type="number" name="strength" id="strength" class="input input-bordered w-full max-w-xs mb-3" placeholder="Strength" max="10" [(ngModel)]="strength" (ngModelChange)="calculateTotal()">
+        </li>
+        <li>
+          <label for="power">Poder:</label>
+          <input type="number" name="power" id="power" class="input input-bordered w-full max-w-xs mb-3" placeholder="Power" max="10" [(ngModel)]="power" (ngModelChange)="calculateTotal()">
+        </li>
+        <li>
+          <label for="endurance">Resistencia:</label>
+          <input type="number" name="endurance" id="endurance" class="input input-bordered w-full max-w-xs mb-3" placeholder="Endurance" max="10" [(ngModel)]="endurance" (ngModelChange)="calculateTotal()">
+        </li>
+        <li>
+          <label for="jumping" >Salto:</label>
+          <input type="number" name="jumping" id="jumping" class="input input-bordered w-full max-w-xs mb-3" placeholder="Jumping" max="10" [(ngModel)]="jumping" (ngModelChange)="calculateTotal()">
+        </li>
+        <li>
+          <label for="speed" class="block text-center">Velocidad:</label>
+          <input type="number" name="speed" id="speed" class="input input-bordered w-full max-w-xs mb-5" placeholder="Speed" max="10" [(ngModel)]="speed" (ngModelChange)="calculateTotal()">
+        </li>
+        <li class="flex items-center justify-between mb-4">
+          <label for="totalPhysicalSkills" class="block text-center mb-4 mt-40">Promedio Habilidades Físicas:</label>
+          <input type="number" name="totalPhysicalSkills" id="totalPhysicalSkills" class="input input-bordered w-full max-w-xs" placeholder="Promedio" max="10" disabled [(ngModel)]="totalPhysicalSkills">
+        </li>
+      </ul>
+    </li>
+  </div>
+    <div class="grid-items">
+    <li class="my-4">
+      <h2 class="text-2xl font-bold mb-6">Habilidades Técnicas</h2>
+      <ul>
+        <li>
+          <label for="anticipation">Anticipación:</label>
+          <input type="number" name="anticipation" id="anticipation" class="input input-bordered w-full max-w-xs mb-3" placeholder="Anticipation" max="10" [(ngModel)]="anticipation" (ngModelChange)="calculateTotal()">
+        </li>
+        <li>
+          <label for="placement">Colocación:</label>
+          <input type="number" name="placement" id="placement" class="input input-bordered w-full max-w-xs mb-3" placeholder="Placement" max="10" [(ngModel)]="placement" (ngModelChange)="calculateTotal()">
+        </li>
+        <li>
+          <label for="concentration">Concentración:</label>
+          <input type="number" name="concentration" id="concentration" class="input input-bordered w-full max-w-xs mb-3" placeholder="Concentration" max="10" [(ngModel)]="concentration" (ngModelChange)="calculateTotal()">
+        </li>
+        <li>
+          <label for="forcefulness">Fuerza Física:</label>
+          <input type="number" name="forcefulness" id="forcefulness" class="input input-bordered w-full max-w-xs mb-3" placeholder="Forcefulness" max="10" [(ngModel)]="forcefulness" (ngModelChange)="calculateTotal()">
+        </li>
+        <li>
+          <label for="overlap">Superposición:</label>
+          <input type="number" name="overlap" id="overlap" class="input input-bordered w-full max-w-xs mb-3" placeholder="Overlap" max="10" [(ngModel)]="overlap" (ngModelChange)="calculateTotal()">
+        </li>
+        <li>
+          <label for="offTheBall">Sin Balon:</label>
+          <input type="number" name="offTheBall" id="offTheBall" class="input input-bordered w-full max-w-xs mb-3" placeholder="Off The Ball" max="10" [(ngModel)]="offTheBall" (ngModelChange)="calculateTotal()">
+        </li>
+        <li>
+          <label for="positioning">Posicionamiento:</label>
+          <input type="number" name="positioning" id="positioning" class="input input-bordered w-full max-w-xs mb-3" placeholder="Positioning" max="10" [(ngModel)]="positioning" (ngModelChange)="calculateTotal()">
+        </li>
+        <li>
+          <label for="gameVision">Visión de Juego:</label>
+          <input type="number" name="gameVision" id="gameVision" class="input input-bordered w-full max-w-xs mb-4" placeholder="Game Vision" max="10" [(ngModel)]="gameVision" (ngModelChange)="calculateTotal()">
+        </li>
+        <li>
+          <label for="totalTacticalSkills" class="mb-4 mt-20">Promedio Habilidades Tácticas:</label>
+          <input type="number" name="totalTacticalSkills" id="totalTacticalSkills" class="input input-bordered w-full max-w-xs mb-3" placeholder="Promedio" max="10" disabled [(ngModel)]="totalTacticalSkills">
+        </li>
+      </ul>
+    </li>
+  </div>
+</div>
+<div class="flex justify-around">
+<li class="mb-4">
+  <label for="averageTotalSkills"  class="block text-center mb-4">Promedio de habilidades totales:</label>
+  <input type="number" placeholder="Promedio de habilidades totales" id="averageTotalSkills" class="input input-bordered w-full max-w-xs mb-3" name="averageTotalSkills" disabled [(ngModel)]="averageTotalSkills" />
+</li>
+    <li class="flex items-center justify-between mb-4">
+      <label for="matchSummary"  class="block text-center">Resumen del Partido</label>
+      <input type="text" name="matchSummary" id="matchSummary" class="input input-bordered w-full max-w-xs mb-3" placeholder="Resume del Partido" [(ngModel)]="matchSummary">
+    </li>
+  </div>
+  </ul>
+  <!-- Submit Button -->
+  <div class="flex justify-center">
+    <button type="submit" class="btn btn-wide justify-center items-center rounded-md border border-blue-800 px-4 py-2 font-medium text-white bg-[#142740] hover:bg-transparent hover:text-black mb-4 ml-3 text-s">Enviar</button>
+  </div>
+  
+</form>
+
+<div *ngIf="modalOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+  <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+    <span class="absolute top-0 right-0 mt-3 mr-3 text-gray-700 cursor-pointer" (click)="closeModal()">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </span>
+    <svg class="w-12 h-12 mx-auto mb-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+    </svg>
+    <p class="text-lg text-gray-800 mb-4">Informe Creado correctamente</p>
+    <button class="w-full justify-center items-center rounded-md border border-transparent shadow-sm px-4 py-2 text-base font-medium text-white bg-[#142740] hover:bg-[#A19DA8] active:bg-[#142740] sm:ml-3 sm:w-auto sm:text-sm" (click)="closeModal()">Aceptar</button>
+  </div>
+</div>
+
+
+<app-footer/>
+
+
+

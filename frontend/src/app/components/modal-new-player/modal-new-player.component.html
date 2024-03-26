@@ -1,0 +1,71 @@
+<button class="btn bg-[#F2D16D] hover:bg-[#f8e8b5]" (click)="showModal()">Crear Jugador</button>
+<dialog id="my_modal_4" class="modal">
+    <div class="modal-box w-2xl max-w-1xl mx-auto flex flex-col items-center">
+        <h3 class="font-bold text-lg mb-3 ">Crear Jugador</h3>
+        <form method="dialog">
+            <button (click)="closeModal()" class="btn btn-sm btn-circle btn-ghost absolute right-4 top-2">✕</button>
+          </form>
+        <form #playerForm="ngForm" (ngSubmit)="submitForm(playerForm)" class="flex flex-col items-center">
+            <input type="text" placeholder="Nombre y Apellidos" class="input input-bordered w-full max-w-xs mb-3" name="name" ngModel required />
+            <input type="number" placeholder="Edad" class="input input-bordered w-full max-w-xs mb-3" name="age" ngModel required />
+            <input type="text" placeholder="Equipo Actual" class="input input-bordered w-full max-w-xs mb-3" name="actualTeam" ngModel required />
+            <input type="number" placeholder="Dorsal" class="input input-bordered w-full max-w-xs mb-3" name="dorsal" ngModel required />
+            <input type="text" placeholder="Nacionalidad" class="input input-bordered w-full max-w-xs mb-3" name="nationality" ngModel required />
+            <select class="select select-bordered w-full max-w-xs mb-3" name="position" ngModel required>
+                <option value="" disabled selected>Posición</option>
+                <option>Delantero</option>
+                <option>Medio Campo</option>
+                <option>Defensa</option>
+                <option>Portero</option>
+            </select>
+            <input type="text" placeholder="Peso" class="input input-bordered w-full max-w-xs mb-3" name="weight" ngModel required />
+            <input type="text" placeholder="Tamaño" class="input input-bordered w-full max-w-xs mb-3" name="height" ngModel required />
+            <select class="select select-bordered w-full max-w-xs mb-3" name="strongFoot" ngModel required>
+                <option value="" disabled selected>Pie Dominante</option>
+                <option>Derecha</option>
+                <option>Zurda</option>
+                <option>Ambas</option>
+            </select>
+            <input type="text" placeholder="URL Foto del Jugador" class="input input-bordered w-full max-w-xs mb-3" name="photo" ngModel required />  
+            <button type="submit" (click)="openCreatePlayer()" class="w-full justify-center items-center rounded-md border border-transparent shadow-sm px-4 py-2 text-base font-medium text-white bg-[#142740] hover:bg-[#A19DA8] active:bg-[#142740] sm:ml-3 sm:w-auto sm:text-sm">Enviar</button>
+        </form>
+    </div>
+    <div>
+        <div *ngIf="modalPlayerCreated" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+            <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+        
+                <!-- Contenido del modal de éxito -->
+                <div class="inline-block align-middle bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                        <div >
+                            <div class="mt-3 text-center sm:mt-0 sm:text-left w-30 flex flex-col justify-center align-center items-center">
+                                <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                                    ¡Éxito!
+                                </h3>
+                                <span class="absolute top-0 right-0 mt-3 mr-3 text-gray-700 cursor-pointer" (click)="closeModal()">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </span> 
+                                <svg class="w-12 h-12 mx-auto mb-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <p class="mt-2 text-sm text-gray-500">¡El jugador se ha creado correctamente!</p>
+                                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                                    <!-- Botón para cerrar el modal de éxito -->
+                                    <button (click)="closeModal()" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 text-base font-medium text-white bg-[#142740] hover:bg-[#A19DA8] active:bg-[#142740] sm:ml-3 sm:w-auto sm:text-sm">
+                                        Aceptar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+          </div>
+    </div>
+    
+</dialog>

@@ -1,0 +1,19 @@
+h2 {
+    background-color: rgba(8, 8, 65, 0.826);
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.container > div {
+    background-color: rgba(247, 223, 68, 0.222);
+    padding: 10px;
+    margin-bottom: 10px;
+}

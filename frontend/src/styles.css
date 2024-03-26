@@ -1,1 +1,57 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@font-face {
+  font-family: "Oswald";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Oswald Bold"), local("Oswald-Bold"),
+    url(./assets/fonts/Oswald/static/Oswald-Bold.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Oswald";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Oswald Regular"), local("Oswald-Regular"),
+    url(./assets/fonts/Oswald/static/Oswald-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Oswald";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Oswald Light"), local("Oswald-Light"),
+    url(./assets/fonts/Oswald/static/Oswald-Light.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "SpaceMono";
+  font-style: normal;
+  font-weight: 700;
+  src: local("SpaceMono Bold"), local("SpaceMono-Bold"),
+    url(./assets/fonts/Space_Mono/SpaceMono-Bold.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "SpaceMono";
+  font-style: normal;
+  font-weight: 400;
+  src: local("SpaceMono Regular"), local("SpaceMono-Regular"),
+    url(./assets/fonts/Space_Mono/SpaceMono-Regular.ttf) format("truetype");
+}
+
+body {
+  font-family: "Oswald", sans-serif;
+}
+/* Oculta la barra de desplazamiento en todos los elementos */
+::-webkit-scrollbar {
+  display: none;
+}
